@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First App</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <h1>Hellow, this is index.html</h1>
+    <h2>Access Records</h2>
+    <div id="accessRecord" class="col-12">
+        {% if access_records %}
+        <table class="table">
+            <thead>
+                <th>Name</th>
+                <th>Date</th>
+            </thead>
+            <tbody>
+            {% for acc in access_records %}
+                <tr>
+                    <td>{{ acc.name }}</td>
+                    <td>{{ acc.date }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>
