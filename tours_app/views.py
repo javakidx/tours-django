@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from tours_app.models import AccessRecord
+from tours_app.models import AccessRecord, User
+from . import forms
 
 
 # Create your views here.
@@ -23,3 +24,21 @@ def help(request):
 
 def include_index(request):
     return HttpResponse('<b>Hello World!</b>')
+
+
+def user_page(request):
+    users = User.objects.order_by('first_name')
+    data = {'users': users}
+    return render(request, 'tours_app/users.html', context=data)
+
+
+def form_name_view(request):
+    if request.method == 'POST':
+        form = forms.FormName(request.POST)
+        if form.is_valid():
+            print(f"Name: {form.cleaned_data['name']}")
+            print(f"Email: {form.cleaned_data['email']}")
+            print(f"Text: {form.cleaned_data['text']}")
+    else:
+        form = forms.FormName()
+    return render(request, 'tours_app/form_page.html', {'form': form})

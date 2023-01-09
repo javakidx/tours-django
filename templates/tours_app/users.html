@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="col-10">
+        {%  if users %}
+        <h1>Here are your users:</h1>
+            <ol>
+                {% for u in users %}
+                    <li>User Info
+                        <ul>
+                            <li>Fist Name: {{ u.first_name }}</li>
+                            <li>Last Name: {{ u.last_name }}</li>
+                            <li>Email: {{ u.email }}</li>
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ol>
+        {%  endif %}
+    </div>
+</body>
+</html>

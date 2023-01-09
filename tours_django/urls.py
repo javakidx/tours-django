@@ -23,5 +23,7 @@ urlpatterns = [
     path('tours_app/', include('tours_app.urls')),
     path('app-two', views.app_two),
     path('admin/', admin.site.urls),
-    path('help', views.help)
+    path('help', views.help),
+    path('users', views.user_page),
+    path('formpage', views.form_name_view, name='form_name')
 ]
