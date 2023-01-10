@@ -4,4 +4,5 @@ from tours_app import views
 urlpatterns = [
     path('', views.include_index, name='index'),
     # path('help', views.help, name='help')
+    path('other', views.other, name='other')
 ]

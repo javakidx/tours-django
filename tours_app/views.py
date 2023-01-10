@@ -9,8 +9,9 @@ from . import forms
 def index(request):
     # return HttpResponse('Hello World!')
     # data_dict = {'test_data': 'Message from tours_app/views.py'}
-    access_records = AccessRecord.objects.order_by('date')
-    data_dict = {"access_records": access_records}
+    # access_records = AccessRecord.objects.order_by('date')
+    # data_dict = {"access_records": access_records}
+    data_dict = {'message': 'hello world', 'num': 10}
     return render(request, 'tours_app/index.html', context=data_dict)
 
 
@@ -42,3 +43,7 @@ def form_name_view(request):
     else:
         form = forms.FormName()
     return render(request, 'tours_app/form_page.html', {'form': form})
+
+
+def other(request):
+    return render(request, 'tours_app/other.html')
