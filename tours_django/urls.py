@@ -19,11 +19,11 @@ from tours_app import views
 from django.urls import include
 
 urlpatterns = [
-    path(r'', views.index, name='index'),
+    path('', views.index, name='index'),
     path('tours_app/', include('tours_app.urls')),
     path('app-two', views.app_two),
     path('admin/', admin.site.urls),
     path('help', views.help),
-    path('users', views.user_page),
+    path('users', views.users),
     path('formpage', views.form_name_view, name='form_name')
 ]

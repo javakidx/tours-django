@@ -7,21 +7,13 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 <body>
-    <div class="col-10">
-        {%  if users %}
-        <h1>Here are your users:</h1>
-            <ol>
-                {% for u in users %}
-                    <li>User Info
-                        <ul>
-                            <li>Fist Name: {{ u.first_name }}</li>
-                            <li>Last Name: {{ u.last_name }}</li>
-                            <li>Email: {{ u.email }}</li>
-                        </ul>
-                    </li>
-                {% endfor %}
-            </ol>
-        {%  endif %}
+    <div class="container">
+        <h1>Please sign up here!</h1>
+        <form method="POST">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
     </div>
 </body>
 </html>
