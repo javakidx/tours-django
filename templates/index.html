@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-{% extends "tours_app/base.html" %}
-    {% block body_block %}
-    <h1>Hellow, this is index.html</h1>
+{% extends "base.html" %}
+    {% block content_block %}
+    <h1>Hellow, this is index.html testing TemplateView {{ injectme }}</h1>
     <h2>Access Records</h2>
     <p>{{ message|title }}</p>
     <p>{{ message|cut:"hello" }}</p>
     <p>{{ num|add:50 }}</p>
+    <p>Is authenticated: {{ user.is_authenticated }}</p>
     <div id="accessRecord" class="col-12">
         {% if access_records %}
         <table class="table">
@@ -23,5 +23,6 @@
             </tbody>
         </table>
         {% endif %}
+
     </div>
     {% endblock %}

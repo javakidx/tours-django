@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User as AuthUser
 
 
 # Create your models here.
@@ -33,3 +34,12 @@ class User(models.Model):
 
     def __str__(self):
         return f"{self.first_name}-{self.last_name}"
+
+
+class UserProfileInfo(models.Model):
+    user = models.OneToOneField(AuthUser, on_delete=models.CASCADE)
+    portfolio_site = models.URLField(blank=True)
+    profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
+
+    def __str__(self):
+        return self.user.username

@@ -19,14 +19,23 @@
             <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'tours_app:other' %}">Other</a>
+            <a class="nav-link" href="{% url 'register' %}">Register</a>
           </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'user_login' %}">Login</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>
   </nav>
   <div class="container">
-    {% block body_block %}
+    {% block content_block %}
     {% endblock %}
   </div>
 </body>
