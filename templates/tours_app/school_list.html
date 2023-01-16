@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content_block %}
+<h1>Welcome to School List</h1>
+    {% if school_list %}
+    <ol>
+        {% for school in school_list %}
+            <h2><li><a href="/tours_app/school_detail/{{school.id}}"> {{ school.name }} </a></li></h2>
+        {% endfor %}
+    </ol>
+    {% else %}
+    <p>No Data!</p>
+    {% endif %}
+{% endblock%}

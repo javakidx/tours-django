@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content_block %}
+<h1>
+  Delete {{ school.name}} ?
+</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" class="btn btn-danger" value="Delete">
+  <a class="btn btn-primary" href="{% url 'tours_app:school_detail' pk=school.pk %}">Cancel</a>
+</form>
+{% endblock %}

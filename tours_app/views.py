@@ -1,12 +1,37 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from tours_app.models import AccessRecord, User, AuthUser, UserProfileInfo
-from . import forms
+from . import forms, models
 from tours_app.forms import NewUserForm, UserForm, UserProfileInfoForm
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from django.views.generic import View, TemplateView
+from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, DeleteView, UpdateView
+
+
+class SchoolCreateView(CreateView):
+    fields = ('name', 'principal', 'location')
+    model = models.School
+
+
+class SchoolUpdateView(UpdateView):
+    fields = ('name', 'principal')
+    model = models.School
+
+
+class SchoolDeleteView(DeleteView):
+    model = models.School
+    success_url = reverse_lazy('tours_app:school_list')
+
+
+class SchoolListView(ListView):
+    model = models.School
+
+
+class SchoolDetailView(DetailView):
+    context_object_name = 'school_detail'
+    model = models.School
+    template_name = 'tours_app/school_detail.html'
 
 
 # Create your views here.
@@ -14,7 +39,9 @@ class IndexView(TemplateView):
     template_name = 'index.html'
 
     def get_context_data(self, **kwargs):
-        return {'injectme': 'abc'}
+        context = super().get_context_data(**kwargs)
+        context['injectme'] = 'ABC'
+        return context
 
 
 def index(request):
