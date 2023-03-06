@@ -73,12 +73,20 @@ WSGI_APPLICATION = 'tours_django.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+#     #     'default': {
+#     #         'ENGINE': 'djongo',
+#     #         'NAME': 'natours',
+#     #         'ENFORCE_SCHEMA': False,
+#     #         'CLIENT': {
+#     #             'host': 'mongodb+srv://app-dev:qRCycvCC4mQrvjSQ@cluster0.deys8ga.mongodb.net/natours?retryWrites=true&w=majority'
+#     #         }
+#     #     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
